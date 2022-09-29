@@ -44,10 +44,7 @@ class Restaurante
      */
     private $destacado;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Plato::class, mappedBy="restaurante", orphanRemoval=true)
-     */
-    private $platos;
+
 
     /**
      * @ORM\OneToMany(targetEntity=Horario::class, mappedBy="restaurante", orphanRemoval=true)
@@ -137,35 +134,6 @@ class Restaurante
         return $this;
     }
 
-    /**
-     * @return Collection<int, Plato>
-     */
-    public function getPlatos(): Collection
-    {
-        return $this->platos;
-    }
-
-    public function addPlato(Plato $plato): self
-    {
-        if (!$this->platos->contains($plato)) {
-            $this->platos[] = $plato;
-            $plato->setRestaurante($this);
-        }
-
-        return $this;
-    }
-
-    public function removePlato(Plato $plato): self
-    {
-        if ($this->platos->removeElement($plato)) {
-            // set the owning side to null (unless already changed)
-            if ($plato->getRestaurante() === $this) {
-                $plato->setRestaurante(null);
-            }
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Horario>

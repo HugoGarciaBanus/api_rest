@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PedidoRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -52,10 +54,15 @@ class Pedido
     private $restaurante;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Plato::class)
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToMany(targetEntity=PlatoCantidad::class, mappedBy="pedido", orphanRemoval=true)
      */
-    private $platos;
+    private $platoCantidades;
+
+    public function __construct()
+    {
+        $this->platoCantidades = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -134,15 +141,35 @@ class Pedido
         return $this;
     }
 
-    public function getPlatos(): ?Plato
+    /**
+     * @return Collection<int, PlatoCantidad>
+     */
+    public function getPlatoCantidades(): Collection
     {
-        return $this->platos;
+        return $this->platoCantidades;
     }
 
-    public function setPlatos(?Plato $platos): self
+    public function addPlatoCantidade(PlatoCantidad $platoCantidade): self
     {
-        $this->platos = $platos;
+        if (!$this->platoCantidades->contains($platoCantidade)) {
+            $this->platoCantidades[] = $platoCantidade;
+            $platoCantidade->setPedido($this);
+        }
 
         return $this;
     }
+
+    public function removePlatoCantidade(PlatoCantidad $platoCantidade): self
+    {
+        if ($this->platoCantidades->removeElement($platoCantidade)) {
+            // set the owning side to null (unless already changed)
+            if ($platoCantidade->getPedido() === $this) {
+                $platoCantidade->setPedido(null);
+            }
+        }
+
+        return $this;
+    }
+
+
 }
