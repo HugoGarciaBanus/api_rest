@@ -1,4 +1,4 @@
-App\Entity\Categorias:
+App\Entity\Categoria:
   attributes:
     id:
       groups: ['categoria']

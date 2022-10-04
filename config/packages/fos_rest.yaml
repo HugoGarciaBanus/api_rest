@@ -6,11 +6,11 @@ fos_rest:
         failed_validation: HTTP_BAD_REQUEST
         view_response_listener:  'force'
         formats:
-          json: true
-          xml: false
+            json: true
+            xml: false
     body_listener:
-      decoders:
-        json: fos_rest.decoder.json
+        decoders:
+            json: fos_rest.decoder.json
     exception:
         enabled: true
     format_listener:
