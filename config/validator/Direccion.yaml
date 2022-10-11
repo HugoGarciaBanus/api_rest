@@ -1,0 +1,13 @@
+# OJO, no es necesario poner todas las variables
+# OJO, no poner la variables que hacen referencia a relaciones
+# las variable nullables no hace falta ponerlas, solo para controlar la longitud
+App\Entity\Direccion:
+  properties:
+    calle:
+      - NotBLank: ~
+
+    numero:
+      - NotBLank: ~
+
+    codPostal:
+      - NotBLank: ~

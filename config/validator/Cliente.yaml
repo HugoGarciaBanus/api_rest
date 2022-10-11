@@ -1,0 +1,15 @@
+App\Entity\Cliente:
+  properties:
+    nombre:
+      - NotBlank: ~
+    apellidos:
+      - NotBlank: ~
+    telefono:
+      - NotBlank: ~
+      - Regex:
+          pattern: '/^[0-9]+$/i'
+          match: true
+          message: 'Ha funcionado'
+      - Length:
+          max: 9
+          maxMessage: 'El teléfono no puede tener más de 9 dígitos'

@@ -1,0 +1,19 @@
+App\Entity\Cliente:
+  attributes:
+    id:
+      groups: ['post_cliente', 'get_cliente', 'up_cliente']
+
+    nombre:
+      groups: ['post_cliente', 'get_cliente','up_cliente']
+
+    apellidos:
+      groups: ['post_cliente', 'get_cliente', 'up_cliente']
+
+    telefono:
+      groups: ['post_cliente', 'get_cliente', 'up_cliente']
+
+    direcciones:
+      groups: []
+
+    pedidos:
+      groups: []

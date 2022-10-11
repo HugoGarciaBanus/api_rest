@@ -1,0 +1,6 @@
+App\Entity\Municipios:
+  attributes:
+    id:
+      groups: ['post_dir', 'get_dir_cliente']
+    municipio:
+      groups: ['post_dir', 'get_dir_cliente']
