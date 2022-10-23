@@ -11,7 +11,6 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Test\Constraint\RequestAttributeValueSame;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -62,7 +61,7 @@ class DireccionController extends AbstractFOSRestController
 
     // UPDATE
     /**
-     * @Rest\Patch (path=/{id}")
+     * @Rest\Patch (path="/{id}")
      * @Rest\View (serializerGroups={"post_dir"}, serializerEnableMaxDepthChecks=true)
      */
 
@@ -84,7 +83,7 @@ class DireccionController extends AbstractFOSRestController
 
     // DELETE
     /**
-     * @Rest\Delete (path=/{"id}")
+     * @Rest\Delete (path="/{id}")
      */
 
     public function deleteDireccion(Request $request){

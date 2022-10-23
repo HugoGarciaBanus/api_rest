@@ -1,0 +1,14 @@
+App\Entity\Plato:
+  attribute:
+    id:
+      groups: ['restaurante']
+    nombre:
+      groups: ['restaurante']
+    descripcion:
+      groups: ['restaurante']
+    imgUrl:
+      groups: ['restaurante']
+    precio:
+      groups: ['restaurante']
+    alergenos:
+      groups: ['restaurante']

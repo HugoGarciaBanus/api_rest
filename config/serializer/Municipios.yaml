@@ -1,6 +1,6 @@
 App\Entity\Municipios:
   attributes:
     id:
-      groups: ['post_dir', 'get_dir_cliente']
+      groups: ['post_dir', 'get_dir_cliente', 'municipios']
     municipio:
-      groups: ['post_dir', 'get_dir_cliente']
+      groups: ['post_dir', 'get_dir_cliente', 'municipios']

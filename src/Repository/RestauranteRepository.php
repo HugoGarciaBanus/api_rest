@@ -4,6 +4,8 @@ namespace App\Repository;
 
 use App\Entity\Restaurante;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Query\Parameter;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -37,6 +39,29 @@ class RestauranteRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function findByDayTimeMunicipio($dia, $hora, $idMunicipio){
+
+
+        //Creamos la Query y le añadimos un alias
+        return $this->createQueryBuilder('restaurante')
+            ->join('restaurante.horarios', 'horarios')
+            ->join('restaurante.municipio', 'municipio')
+            ->where('municipio.id = :idMunicipio')
+            ->andWhere('horarios.dia = :dia')
+            ->andWhere('horarios.apertura <= :hora')
+            ->andWhere('horarios.cierre >= :hora')
+            ->setParameters(new ArrayCollection(
+                [
+                    new Parameter('idMunicipio', $idMunicipio),
+                    new Parameter('dia', $dia),
+                    new Parameter('hora', $hora)
+                ]
+            ))
+            ->orderBy('restaurante.id', 'ASC')
+            ->getQuery()
+            ->getResult();
     }
 
 //    /**

@@ -1,6 +1,6 @@
 App\Entity\Provincias:
   attributes:
     id:
-      groups: ['post_dir', 'get_dir_cliente']
+      groups: ['post_dir', 'get_dir_cliente', 'municipios']
     provincia:
-      groups: ['post_dir', 'get_dir_cliente']
+      groups: ['post_dir', 'get_dir_cliente', 'municipios']

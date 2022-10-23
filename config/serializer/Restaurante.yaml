@@ -1,0 +1,25 @@
+App\Entity\Restuarante:
+  attributes:
+    id:
+      groups: ['restaurante', 'res_filtered']
+    nombre:
+      groups: ['restaurante', 'res_filtered']
+    logo_Url:
+      groups: ['restaurante', 'res_filtered']
+    imagenUrl:
+      groups: ['restaurante']
+    descripcion:
+      groups: ['restaurante']
+    destacado:
+      groups: ['restaurante']
+    platos:
+      groups: ['restaurante']
+    horarios:
+      groups: ['restaurante']
+    categorias:
+      groups: ['restaurante', 'res_filtered']
+    municipio:
+      groups: ['restaurante']
+
+
+

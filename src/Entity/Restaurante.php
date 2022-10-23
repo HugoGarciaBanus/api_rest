@@ -44,7 +44,10 @@ class Restaurante
      */
     private $destacado;
 
-
+    /**
+     * @ORM\OneToMany(targetEntity=Plato::class, mappedBy="restaurante", orphanRemoval=true)
+     */
+    private $platos;
 
     /**
      * @ORM\OneToMany(targetEntity=Horario::class, mappedBy="restaurante", orphanRemoval=true)
@@ -60,6 +63,12 @@ class Restaurante
      * @ORM\OneToMany(targetEntity=Pedido::class, mappedBy="restaurante", orphanRemoval=true)
      */
     private $pedidos;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Municipios::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $municipio;
 
     public function __construct()
     {
@@ -132,6 +141,22 @@ class Restaurante
         $this->destacado = $destacado;
 
         return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getPlatos(): ArrayCollection
+    {
+        return $this->platos;
+    }
+
+    /**
+     * @param ArrayCollection $platos
+     */
+    public function setPlatos(ArrayCollection $platos): void
+    {
+        $this->platos = $platos;
     }
 
 
@@ -215,6 +240,18 @@ class Restaurante
                 $pedido->setRestaurante(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getMunicipio(): ?Municipios
+    {
+        return $this->municipio;
+    }
+
+    public function setMunicipio(?Municipios $municipio): self
+    {
+        $this->municipio = $municipio;
 
         return $this;
     }
